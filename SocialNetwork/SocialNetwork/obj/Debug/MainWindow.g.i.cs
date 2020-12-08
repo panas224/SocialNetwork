@@ -11,6 +11,8 @@
 
 using SociaNetwork;
 using SocialNetwork;
+using SocialNetwork.HelperWindow;
+using SocialNetwork.HelperWindows;
 using System;
 using System.Diagnostics;
 using System.Windows;
