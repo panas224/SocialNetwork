@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using SociaNetwork;
 using SocialNetwork;
 using System;
 using System.Diagnostics;
