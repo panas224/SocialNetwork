@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SocialNetwork.SearchPeople
 {
     /// <summary>
-    /// Interaction logic for PersonWindow.xaml
+    /// Interaction logic for PersonInfo.xaml
     /// </summary>
-    public partial class PersonWindow : Page
+    public partial class PersonInfo : Window
     {
-        public PersonWindow()
+        public PersonInfo()
         {
             InitializeComponent();
         }
