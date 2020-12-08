@@ -55,6 +55,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPeople\PersonInfo.xaml.cs">
+      <DependentUpon>PersonInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWindows\MyProfile.xaml.cs">
+      <DependentUpon>MyProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWindows\ucChangePassword.xaml.cs">
+      <DependentUpon>ucChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWindows\ucFind.xaml.cs">
+      <DependentUpon>ucFind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWindows\ucFriendConection.xaml.cs">
+      <DependentUpon>ucFriendConection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWindows\ucNewPost.xaml.cs">
+      <DependentUpon>ucNewPost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWindows\ucProfileEdit.xaml.cs">
+      <DependentUpon>ucProfileEdit.xaml</DependentUpon>
+    </Compile>
     <Page Include="HelperWindow\AddCommentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +137,38 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchPeople\PersonInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWindows\MyProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWindows\ucChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWindows\ucFind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWindows\ucFriendConection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWindows\ucNewPost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWindows\ucProfileEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MessageWindow.xaml.cs">
@@ -143,9 +199,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SearchPeople\" />
-    <Folder Include="UcWindows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
