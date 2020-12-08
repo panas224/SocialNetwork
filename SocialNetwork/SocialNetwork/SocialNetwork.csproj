@@ -55,6 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="HelperWindow\AddCommentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelperWindow\AddPostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelperWindow\EditPostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelperWindow\ListOfCommentsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelperWindow\ListOfPersonsWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +86,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HelperWindow\AddCommentWindow.xaml.cs">
+      <DependentUpon>AddCommentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperWindow\AddPostWindow.xaml.cs">
+      <DependentUpon>AddPostWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperWindow\EditPostWindow.xaml.cs">
+      <DependentUpon>EditPostWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperWindow\ListOfCommentsWindow.xaml.cs">
+      <DependentUpon>ListOfCommentsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperWindow\ListOfPersonsWindows.xaml.cs">
+      <DependentUpon>ListOfPersonsWindows.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -109,7 +144,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HwlperWindow\" />
     <Folder Include="SearchPeople\" />
     <Folder Include="UcWindows\" />
   </ItemGroup>
