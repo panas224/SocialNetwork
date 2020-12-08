@@ -1,14 +1,21 @@
-﻿<Page x:Class="SocialNetwork.UcWindows.ucFriendConection"
+﻿<UserControl x:Class="SocialNetwork.UcWindows.ucFriendConection"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SocialNetwork.UcWindows"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ucFriendConection">
-
+             Height="550" Width="774">
     <Grid>
-        
+        <ScrollViewer Margin="10,10,10,10">
+            <StackPanel>
+
+                <StackPanel Name="stackpanel"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
-</Page>
+</UserControl>
+
+</UserControl>
