@@ -9,6 +9,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using SociaNetwork;
+using SocialNetwork;
+using SocialNetwork.HelperWindow;
+using SocialNetwork.HelperWindows;
 using SocialNetwork.UcWindows;
 using System;
 using System.Diagnostics;
