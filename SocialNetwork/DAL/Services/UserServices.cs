@@ -26,9 +26,9 @@ namespace DAL.Services
         RedisRepository.RedisRepository redisRepository;
         public UserServices()
         {
-            repository = new UserRepository();
-            graphRepository = new GraphRepository();
-            redisRepository = new RedisRepository.RedisRepository();
+            UserRepository repository = new UserRepository();
+            GraphRepository graphRepository = new GraphRepository();
+            RedisRepository.RedisRepository redisRepository; = new RedisRepository.RedisRepository();
         }
         //
         public bool CheckPassword(string nickname, string password)
