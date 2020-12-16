@@ -1,26 +1,34 @@
-﻿using DAL.Entities;
-using DAL.MongoRepository;
-using DAL.Neo4JRepository;
-using MongoDB.Bson;
+﻿using DAL.RedisRepository;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using System.Security.Cryptography;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Security.Cryptography;
+using DAL.Entities;
+using DAL.MongoRepository;
+using MongoDB.Bson;
+
+using DAL.Neo4JRepository;
 
 namespace DAL.Services
 {
+
+
+
     public class UserServices
     {
         UserRepository repository;
         GraphRepository graphRepository;
+        RedisRepository.RedisRepository redisRepository;
         public UserServices()
         {
             repository = new UserRepository();
             graphRepository = new GraphRepository();
+            redisRepository = new RedisRepository.RedisRepository();
         }
         //
         public bool CheckPassword(string nickname, string password)
@@ -39,7 +47,6 @@ namespace DAL.Services
                     return false;
                 }
             }
-
             return false;
         }
 
@@ -55,7 +62,7 @@ namespace DAL.Services
             return result;
         }
 
-        public bool CheckIndentityOfNickName(string nickname)
+        public bool CheckIndentityOfNickName(string nickname)//перевіряєм чи нікнейм є
         {
             List<User> users = new List<User>();
             users = repository.GetUsers();
@@ -70,7 +77,7 @@ namespace DAL.Services
             return true;
         }
         //
-        public void NickNameWrite(string NickName)
+        public void NickNameWrite(string NickName) // save currect user nickname to file
         {
             var p = new NickInfo();
 
@@ -96,7 +103,7 @@ namespace DAL.Services
 
         }
 
-        public string NickNameRead()
+        public string NickNameRead() // read current user nickmane from file
         {
             var p = new NickInfo();
             using (FileStream fs = new FileStream("NickInfo.json", FileMode.OpenOrCreate))
@@ -108,7 +115,6 @@ namespace DAL.Services
                 }
 
             }
-
             return p.NickName;
         }
         //
@@ -200,12 +206,13 @@ namespace DAL.Services
             user.Date = date1.ToString();
             repository.Add(user);
 
-            //graphRepository.CreatePerson(new Person() {
-            //    Surname = usSurname,
-            //    Name = usName,
-            //    Mail = usMail,
-            //    NickName = usNickName
-            //});
+            graphRepository.CreatePerson(new Person()
+            {
+                Surname = usSurname,
+                Name = usName,
+                Mail = usMail,
+                NickName = usNickName
+            });
         }
         //
         public User GetUser()
@@ -273,7 +280,6 @@ namespace DAL.Services
                 return ls;
             }
         }
-
         public List<string> GetFollowing()
         {
             List<string> ls = new List<string>();
@@ -296,6 +302,13 @@ namespace DAL.Services
 
             user = GetUser(NickNameRead());
 
+            if (redisRepository.HasCache(user.NickName))// check if existed key in redis
+            {
+                res = redisRepository.GetFriendsOfFriendCache(user.NickName); // get value
+                return res;
+            }
+
+
             var people = graphRepository.FriendsOfAFriend(new Person()
             {
 
@@ -304,7 +317,6 @@ namespace DAL.Services
                 Mail = user.Mail,
                 NickName = user.NickName
             });
-
             foreach (var elem in people)
             {
                 bool temp = true;
@@ -320,6 +332,8 @@ namespace DAL.Services
                     res.Add(elem);
                 }
             }
+
+            redisRepository.SetFriendsOfFriendCache(user.NickName, res, 3600);// hash this information with ttl = 1 hour
 
             return res;
 
@@ -377,6 +391,7 @@ namespace DAL.Services
                 User user2 = new User();
                 user2 = GetUser(nickname);
 
+
                 var temp = graphRepository.ConnectingPaths(new Person()
                 {
                     Surname = user1.Surname,
@@ -391,7 +406,6 @@ namespace DAL.Services
                     NickName = user2.NickName,
                     Mail = user2.Mail
                 });
-
                 foreach (var elem in temp)
                 {
                     res.Add(elem);
